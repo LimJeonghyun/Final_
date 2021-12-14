@@ -38,7 +38,8 @@ BoardVO u = (BoardVO) request.getAttribute("u");
 <tr><td>Price:</td><td><input type="text" name="price" value="<%= u.getPrice()%>" /></td></tr>
 <tr><td>Release date:</td><td><input type="text" name="releasedate" value="<%= u.getReleasedate()%>"/></td></tr>
 <tr><td>Detail</td><td><textarea cols="50" rows="5" name="detail"><%= u.getDetail()%></textarea></td></tr>
-<!-- <input type="button" value="Cancel" onclick="history.back()"/></td></tr> -->
+<input type="button" value="back" onclick="location.href='../adminlist'"/></td></tr>
+<!-- back 기능이 있으면 좋을것 같아서  -->
 </table>
 </form>
 
@@ -58,7 +59,7 @@ BoardVO u = (BoardVO) request.getAttribute("u");
 </form>
 
 <br>
- location.reload();
+
 <!-- comment delete function  -->
 
 <table id="clist" width="90%">

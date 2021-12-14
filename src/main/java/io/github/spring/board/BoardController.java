@@ -31,6 +31,11 @@ public class BoardController {
 		model.addAttribute("list", boardService.getBoardList());
 		return "adminlist";
 	}
+	
+	@RequestMapping(value = "/chLogin", method = RequestMethod.POST)
+	public String chLogin() {
+			return "chLogin";
+	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addPost() {

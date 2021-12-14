@@ -35,26 +35,6 @@
 <body>
 
 
-<!-- 로그인 확인 기능  -->
-<%-- <%
-	request.setCharacterEncoding("UTF-8");
-	
-	String id= request.getParameter("id");
-	String pw = request.getParameter("pw");
-	String admin_id = "admin";
-	String admin_pw = "password";
-
-	if(id.equals(admin_id) && pw.equals(admin_pw)){
-		 //session.setAttribute("id", id);
-		%>
-		<script>alert("로그인 성공!"); </script><% 
-	}
-	else{
-		%>
-		<script>alert("로그인 실패 :("); history.back(); </script><%
-	}
-%> --%>
-
 <!-- 목록 출력  -->
 <h1>목록화면</h1>
 
