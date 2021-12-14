@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 //import src.main.java.io.github.board.spring.BoardRowMapper;
 //import src.main.java.io.github.board.spring.BoardVO;
@@ -36,6 +37,7 @@ public class BoardDAO {
 		private final String BOARD_INSERT = "insert into product (category, name, manufacturer, pic, price, detail, releasedate) values (?,?,?,?,?,?,?)";
 		private final String BOARD_UPDATE = "update product set category=?, name=?, manufacturer=?, pic=?, price=?, detail=?, releasedate=? where product_id=?";
 		private final String BOARD_DELETE = "delete from product where product_id=?";
+		private final String COMMENT_INSERT = "insert into comment (productId, nickname, contents) values (?,?,?)";
 		private final String COMMENT_DELETE = "delete from comment where comment_id=?";
 
 		public int insertBoard(final BoardVO vo) {
@@ -66,10 +68,39 @@ public class BoardDAO {
 //			}
 //			return 0;
 		}
+		
+		public int insertComment(final BoardVO vo) {
+			System.out.println("===> JDBC로 insertComment() 기능 처리");
+			return template.update(COMMENT_INSERT, new Object[] {
+					vo.getProductId(),vo.getNickname(),vo.getContents()
+			});
+//			try {
+//				jdbcTemplate.update(new PreparedStatementCreator() {
+//					
+//					@Override
+//					public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+//						// TODO Auto-generated method stub
+//						stmt = con.prepareStatement(BOARD_INSERT);
+//						stmt.setString(1, vo.getCategory());
+//						stmt.setString(2, vo.getName());
+//						stmt.setString(3, vo.getManufacturer());
+//						stmt.setString(4, vo.getPic());
+//						stmt.setString(5, vo.getPrice());
+//						stmt.setString(6, vo.getDetail());
+//						stmt.setString(7, vo.getReleasedate());
+//						stmt.executeUpdate();
+//						
+//					}
+//				});
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			return 0;
+		}
 
 		// 글 삭제
 		public int deleteBoard(final int pid) {
-			System.out.println("===> JDBC로 deleteBoard() 기능 처리");
+			System.out.println("===> JDBC로 deleteBoard() 기능 처리" );
 			return template.update(BOARD_DELETE, new Object[] {
 					pid
 			});
@@ -88,6 +119,14 @@ public class BoardDAO {
 //			} catch (Exception e) {
 //				e.printStackTrace();
 //			}
+		}
+		
+		public int deleteComment(final int cid) {
+			System.out.println("===> JDBC로 deleteComment() 기능 처리");
+			return template.update(COMMENT_DELETE, new Object[] {
+					cid
+			
+			});
 		}
 		
 //		public int deleteComment(final int cid) {
@@ -144,10 +183,21 @@ public class BoardDAO {
 			return null;
 		}
 		
+		
 		public List<BoardVO> getBoardList(){
 			System.out.println("===> JDBC로 getBoardList() 기능 처리");
 			try {
-				return template.query("select * from product", new BoardRowMapper());
+				return template.query("select * from product ", new BoardRowMapper());
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+			return null;
+		}
+		
+		public List<BoardVO>getCommentList(int pid){
+			System.out.println("===> JDBC로 getCommentList() 기능 처리");
+			try {
+				return template.query("select * from comment where productId=" + pid, new CommentRowMapper());
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
@@ -168,7 +218,28 @@ public class BoardDAO {
 			vo.setReleasedate(rs.getString("releasedate"));
 			vo.setCategory(rs.getString("category"));
 			vo.setManufacturer(rs.getString("manufacturer"));
+//			vo.setComment_id(rs.getInt("comment_id"));
+//			vo.setProductId(rs.getString("productId"));
+//			vo.setNickname(rs.getString("nickname"));
+//			vo.setContents(rs.getString("contents"));
 			return vo;
 		}
 
 }
+
+	
+class CommentRowMapper implements RowMapper<BoardVO> {
+
+		@Override
+		public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+			BoardVO vo = new BoardVO();
+			vo.setComment_id(rs.getInt("comment_id"));
+			vo.setProductId(rs.getString("productId"));
+			vo.setNickname(rs.getString("nickname"));
+			vo.setContents(rs.getString("contents"));
+			return vo;
+		}
+	}
+
+	
+	

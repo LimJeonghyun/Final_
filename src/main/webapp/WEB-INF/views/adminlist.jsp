@@ -29,15 +29,14 @@
 }
 </style>
 <script>
-/* function delete_ok(id){
-	var a = confirm("정말로 삭제하겠습니까?");
-	if(a) location.href='deleteok/' + id;
-} */
+
 </script>
 </head>
 <body>
 
-<%
+
+<!-- 로그인 확인 기능  -->
+<%-- <%
 	request.setCharacterEncoding("UTF-8");
 	
 	String id= request.getParameter("id");
@@ -54,14 +53,15 @@
 		%>
 		<script>alert("로그인 실패 :("); history.back(); </script><%
 	}
-%>
+%> --%>
 
+<!-- 목록 출력  -->
 <h1>목록화면</h1>
 
 <table id="list" width="90%">
 <tr>
 	<th>Pic</th>
-	<th>Namee</th>
+	<th>Product</th>
 	<th>Price</th>
 	
 </tr>

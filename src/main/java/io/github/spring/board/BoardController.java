@@ -26,7 +26,7 @@ public class BoardController {
 		return "admin";
 	}
 	
-	@RequestMapping(value = "/adminlist", method = RequestMethod.POST)
+	@RequestMapping(value = "/adminlist", method = RequestMethod.GET)
 	public String boardList(Locale locale, Model model) {
 		model.addAttribute("list", boardService.getBoardList());
 		return "adminlist";
@@ -43,12 +43,23 @@ public class BoardController {
 			System.out.println("데이터 추가 실패");
 		else
 			System.out.println("데이터 추가 성공");
-		return "redirect:list";
+		return "redirect:adminlist";
 	}
+	
+	@RequestMapping(value = "/addcommentok/{id}", method = RequestMethod.POST)
+	public String editCommentOk(BoardVO vo) {
+		if (boardService.insertComment(vo) == 0)
+			System.out.println("데이터 수정 실패");
+		else
+			System.out.println("데이터 수정 성공!!!");
+		return "redirect:../editform/{id}";
+	}
+
 
 	@RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
 	public String editPost(@PathVariable int id, Model model) {
 		BoardVO boardVO = boardService.getBoard(id);
+		model.addAttribute("clist", boardService.getCommentList(id));
 		model.addAttribute("u", boardVO);
 		return "editform";
 	}
@@ -59,16 +70,25 @@ public class BoardController {
 			System.out.println("데이터 수정 실패");
 		else
 			System.out.println("데이터 수정 성공!!!");
-		return "redirect:list";
+		return "redirect:adminlist";
 	}
-
+	
 	@RequestMapping(value = "/delete_ok/{id}", method = RequestMethod.GET)
 	public String deletePostOk(@PathVariable int id) {
 		if (boardService.deleteBoard(id) == 0)
 			System.out.println("데이터 삭제 실패");
 		else
 			System.out.println("데이터 삭제 성공!!");
-		return "redirect:../list";
+		return "redirect:../adminlist";
+	}
+	
+	@RequestMapping(value = "/deletec_ok/{id}/{cid}", method = RequestMethod.GET)
+	public String deleteCommentOk(@PathVariable int id, @PathVariable  int cid) {
+		if (boardService.deleteComment(cid) == 0)
+			System.out.println("데이터 삭제 실패");
+		else
+			System.out.println("데이터 삭제 성공!!");
+		return "redirect:../../editform/{id}";
 	}
 	
 //	@RequestMapping(value = "/delete_okc/{id}", method = RequestMethod.GET)

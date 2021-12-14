@@ -20,18 +20,23 @@ public class BoardServiceImpl implements BoardService {
 		public int insertBoard(BoardVO vo) {
 			return boardDAO.insertBoard(vo);
 		}
+		
+		@Override
+		public int insertComment(BoardVO vo) {
+			return boardDAO.insertComment(vo);
+		}
 
 		@Override
 		public int deleteBoard(int pid) {
 			boardDAO.deleteBoard(pid);
 			return 1;
 		}
-		
-//		@Override
-//		public int deleteComment(int cid) {
-//			boardDAO.deleteComment(cid);
-//			return 1;
-//		}
+//		
+		@Override
+		public int deleteComment(int cid) {
+			boardDAO.deleteComment(cid);
+			return 1;
+		}
 
 		@Override
 		public int updateBoard(BoardVO vo) {
@@ -42,6 +47,12 @@ public class BoardServiceImpl implements BoardService {
 		public BoardVO getBoard(int pid) {
 			return boardDAO.getBoard(pid);
 		}
+		
+		@Override
+		public List<BoardVO> getCommentList(int cid) {
+			return boardDAO.getCommentList(cid);
+		}
+
 
 		@Override
 		public List<BoardVO> getBoardList() {
