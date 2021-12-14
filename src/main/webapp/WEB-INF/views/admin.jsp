@@ -12,9 +12,9 @@
 관리자 Login page
 </h1>
 
-<form name="form" action="test2.jsp" method="get">
-		ID : <input type="text" name="name"><br>
-		PW : <input type="text" name="pw"><br>
+<form name="form" action="adminlist" method="post">
+		ID : <input type="text" name="id"><br>
+		PW : <input type="password" name="pw" maxlength='10'><br>
 		<input type="submit" value="로그인"><br>
 </form>
 

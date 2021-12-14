@@ -12,12 +12,12 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import src.main.java.io.github.board.spring.BoardRowMapper;
-import src.main.java.io.github.board.spring.BoardVO;
-import src.main.java.io.github.board.spring.Exception;
-import src.main.java.io.github.board.spring.Object;
-import src.main.java.io.github.board.spring.Override;
-import src.main.java.io.github.board.spring.String;
+//import src.main.java.io.github.board.spring.BoardRowMapper;
+//import src.main.java.io.github.board.spring.BoardVO;
+//import src.main.java.io.github.board.spring.Exception;
+//import src.main.java.io.github.board.spring.Object;
+//import src.main.java.io.github.board.spring.Override;
+//import src.main.java.io.github.board.spring.String;
 
 @Repository
 public class BoardDAO {

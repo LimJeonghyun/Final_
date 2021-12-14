@@ -26,15 +26,10 @@ public class BoardController {
 		return "admin";
 	}
 	
-	@RequestMapping(value = "/checklog", method = RequestMethod.POST)
-	public String check(@PathVariable String user_id, String user_pwd) {
-		return "chLogin";
-	}
-	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminlist", method = RequestMethod.POST)
 	public String boardList(Locale locale, Model model) {
 		model.addAttribute("list", boardService.getBoardList());
-		return "list";
+		return "adminlist";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)

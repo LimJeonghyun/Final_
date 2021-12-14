@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import src.main.java.io.github.board.spring.BoardDAO;
-import src.main.java.io.github.board.spring.BoardService;
-import src.main.java.io.github.board.spring.BoardVO;
-import src.main.java.io.github.board.spring.Override;
+//import src.main.java.io.github.board.spring.BoardDAO;
+//import src.main.java.io.github.board.spring.BoardService;
+//import src.main.java.io.github.board.spring.BoardVO;
+//import src.main.java.io.github.board.spring.Override;
 
 @Service
 public class BoardServiceImpl implements BoardService {

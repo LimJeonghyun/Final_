@@ -29,13 +29,32 @@
 }
 </style>
 <script>
-function delete_ok(id){
+/* function delete_ok(id){
 	var a = confirm("정말로 삭제하겠습니까?");
 	if(a) location.href='deleteok/' + id;
-}
+} */
 </script>
 </head>
 <body>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	
+	String id= request.getParameter("id");
+	String pw = request.getParameter("pw");
+	String admin_id = "admin";
+	String admin_pw = "password";
+
+	if(id.equals(admin_id) && pw.equals(admin_pw)){
+		 //session.setAttribute("id", id);
+		%>
+		<script>alert("로그인 성공!"); </script><% 
+	}
+	else{
+		%>
+		<script>alert("로그인 실패 :("); history.back(); </script><%
+	}
+%>
 
 <h1>목록화면</h1>
 
