@@ -40,87 +40,31 @@ public class BoardDAO {
 		private final String COMMENT_INSERT = "insert into comment (productId, nickname, contents) values (?,?,?)";
 		private final String COMMENT_DELETE = "delete from comment where comment_id=?";
 
+		// 상품 추가 기능 
 		public int insertBoard(final BoardVO vo) {
 			System.out.println("===> JDBC로 insertBoard() 기능 처리");
 			return template.update(BOARD_INSERT, new Object[] {
 					vo.getCategory(),vo.getName(),vo.getManufacturer(),vo.getPic(),vo.getPrice(),vo.getDetail(),vo.getReleasedate()
 			});
-//			try {
-//				jdbcTemplate.update(new PreparedStatementCreator() {
-//					
-//					@Override
-//					public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-//						// TODO Auto-generated method stub
-//						stmt = con.prepareStatement(BOARD_INSERT);
-//						stmt.setString(1, vo.getCategory());
-//						stmt.setString(2, vo.getName());
-//						stmt.setString(3, vo.getManufacturer());
-//						stmt.setString(4, vo.getPic());
-//						stmt.setString(5, vo.getPrice());
-//						stmt.setString(6, vo.getDetail());
-//						stmt.setString(7, vo.getReleasedate());
-//						stmt.executeUpdate();
-//						
-//					}
-//				});
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			return 0;
 		}
 		
+		// 댓글 추가 기능 
 		public int insertComment(final BoardVO vo) {
 			System.out.println("===> JDBC로 insertComment() 기능 처리");
 			return template.update(COMMENT_INSERT, new Object[] {
 					vo.getProductId(),vo.getNickname(),vo.getContents()
 			});
-//			try {
-//				jdbcTemplate.update(new PreparedStatementCreator() {
-//					
-//					@Override
-//					public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-//						// TODO Auto-generated method stub
-//						stmt = con.prepareStatement(BOARD_INSERT);
-//						stmt.setString(1, vo.getCategory());
-//						stmt.setString(2, vo.getName());
-//						stmt.setString(3, vo.getManufacturer());
-//						stmt.setString(4, vo.getPic());
-//						stmt.setString(5, vo.getPrice());
-//						stmt.setString(6, vo.getDetail());
-//						stmt.setString(7, vo.getReleasedate());
-//						stmt.executeUpdate();
-//						
-//					}
-//				});
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			return 0;
 		}
 
-		// 글 삭제
+		// 글 삭제 기능 
 		public int deleteBoard(final int pid) {
 			System.out.println("===> JDBC로 deleteBoard() 기능 처리" );
 			return template.update(BOARD_DELETE, new Object[] {
 					pid
 			});
-//			try {
-//				template.update(new PreparedStatementCreator() {
-//					
-//					@Override
-//					public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-//						// TODO Auto-generated method stub
-//						stmt = con.prepareStatement(BOARD_DELETE);
-//						stmt.setInt(1, pid);
-////						stmt.executeUpdate();
-//						return stmt;
-//					}
-//				});
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
 		}
 		
+		// 댓글 삭제기능 
 		public int deleteComment(final int cid) {
 			System.out.println("===> JDBC로 deleteComment() 기능 처리");
 			return template.update(COMMENT_DELETE, new Object[] {
@@ -129,49 +73,15 @@ public class BoardDAO {
 			});
 		}
 		
-//		public int deleteComment(final int cid) {
-//			System.out.println("===> JDBC로 deleteComment() 기능 처리");
-//			return template.update(COMMENT_DELETE, new Object[] {
-//					cid
-//			});
-//			
-//		}
-			
+		// 글 수정 기능 	
 		public int updateBoard(final BoardVO vo) {
 			System.out.println("===> JDBC로 updateBoard() 기능 처리");
 			return template.update(BOARD_UPDATE, new Object[] {
 					vo.getCategory(),vo.getName(),vo.getManufacturer(),vo.getPic(),vo.getPrice(),vo.getDetail(),vo.getReleasedate(),vo.getProduct_id()
 			});
-//			try {
-//				template.update(new PreparedStatementCreator() {
-//					
-//					@Override
-//					public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-//						// TODO Auto-generated method stub
-//						stmt = con.prepareStatement(BOARD_UPDATE);
-//						stmt.setString(1, vo.getCategory());
-//						stmt.setString(2, vo.getName());
-//						stmt.setString(3, vo.getManufacturer());
-//						stmt.setString(4, vo.getPic());
-//						stmt.setString(5, vo.getPrice());
-//						stmt.setString(6, vo.getDetail());
-//						stmt.setString(7, vo.getReleasedate());
-//						stmt.setInt(8, vo.getProduct_id());
-//						return stmt;
-//					}
-//				});
-//				
-//				
-//				System.out.println(vo.getCategory() + "-" + vo.getName() + "-" + vo.getManufacturer() + "-" + vo.getPic() + "-" + vo.getPrice() + "-" + vo.getDetail() + "-" + vo.getReleasedate() + "-" + vo.getProduct_id());
-////				stmt.executeUpdate();
-//				return 1;
-//				
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			return 0;
 		}	
 		
+		// 해당 아이디 글 하나 가져오기 
 		public BoardVO getBoard(int pid) {
 			
 			System.out.println("===> JDBC로 getBoard() 기능 처리");
@@ -183,7 +93,8 @@ public class BoardDAO {
 			return null;
 		}
 		
-		
+		// 상품 목록 가져오기 
+		// category 파라미터로 받아서 가져오는 거로 수정하면 될 듯! 
 		public List<BoardVO> getBoardList(){
 			System.out.println("===> JDBC로 getBoardList() 기능 처리");
 			try {
@@ -194,6 +105,7 @@ public class BoardDAO {
 			return null;
 		}
 		
+		// 상품 아이디에 맞는 댓글 가져오기 기능 
 		public List<BoardVO>getCommentList(int pid){
 			System.out.println("===> JDBC로 getCommentList() 기능 처리");
 			try {
@@ -218,13 +130,8 @@ public class BoardDAO {
 			vo.setReleasedate(rs.getString("releasedate"));
 			vo.setCategory(rs.getString("category"));
 			vo.setManufacturer(rs.getString("manufacturer"));
-//			vo.setComment_id(rs.getInt("comment_id"));
-//			vo.setProductId(rs.getString("productId"));
-//			vo.setNickname(rs.getString("nickname"));
-//			vo.setContents(rs.getString("contents"));
 			return vo;
 		}
-
 }
 
 	

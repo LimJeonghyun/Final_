@@ -47,6 +47,8 @@ BoardVO u = (BoardVO) request.getAttribute("u");
 <!-- 댓글 폼  -->
 
 <!-- 임시 댓글 추가 기능도 구현  -->
+<!-- 해당 기능은 사용자 화면으로 복붙하면 될듯!  -->
+
 <br><br><tr><td>[ Comments Adding Function ]</td></tr><br>
 <form action="../addcommentok/${u.getProduct_id()}" method="post">
 <input type="hidden" name="productId" value="<%=u.getProduct_id()%>"/>
@@ -61,7 +63,6 @@ BoardVO u = (BoardVO) request.getAttribute("u");
 <br>
 
 <!-- comment delete function  -->
-
 <table id="clist" width="90%">
 <tr><td>[ Comments ]</td></tr>
 <c:forEach items="${clist}" var="c">
@@ -78,6 +79,5 @@ BoardVO u = (BoardVO) request.getAttribute("u");
 </table>
 
 
-<%-- <a href="../delete_ok/${u.getProduct_id()}">Delete</a> --%>
 </body>
 </html>

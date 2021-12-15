@@ -17,7 +17,6 @@
 	String admin_pw = "password";
 
 	if(id.equals(admin_id) && pw.equals(admin_pw)){
-		 //session.setAttribute("id", id);
 		%>
 		<script>
 		alert("로그인 성공!"); 

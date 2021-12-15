@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Handles requests for the application home page.
  */
+// admin으로 시
+// /admin/...
 @Controller
 @RequestMapping(value = "/admin")
 public class BoardController {
@@ -20,28 +22,33 @@ public class BoardController {
 	BoardService boardService;
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-
+	
+	// /admin/log -> 로그인페이지 
 	@RequestMapping(value = "/log", method = RequestMethod.GET)
 	public String admin() {
 		return "admin";
 	}
 	
+	// /admin/adminlist -> 관리자 목록 페이지 
 	@RequestMapping(value = "/adminlist", method = RequestMethod.GET)
 	public String boardList(Locale locale, Model model) {
 		model.addAttribute("list", boardService.getBoardList());
 		return "adminlist";
 	}
 	
+	// 로그인 체크 페이지 
 	@RequestMapping(value = "/chLogin", method = RequestMethod.POST)
 	public String chLogin() {
 			return "chLogin";
 	}
-
+	
+	// /admin/add ->상품 추가 페이지 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addPost() {
 		return "addpostform";
 }
-
+	
+	// 상품 추가 확인 페이지 ->관리자 목록  페이지로 돌아감 
 	@RequestMapping(value = "/addok", method = RequestMethod.POST)
 	public String addPostOK(BoardVO vo) {
 		if(boardService.insertBoard(vo) == 0)
@@ -51,6 +58,7 @@ public class BoardController {
 		return "redirect:adminlist";
 	}
 	
+	// 댓글 추가 확인 페이지 -> 상품 수정 페이지로 다시 돌아
 	@RequestMapping(value = "/addcommentok/{id}", method = RequestMethod.POST)
 	public String editCommentOk(BoardVO vo) {
 		if (boardService.insertComment(vo) == 0)
@@ -60,7 +68,8 @@ public class BoardController {
 		return "redirect:../editform/{id}";
 	}
 
-
+	
+	// 상품 수정 페이지 
 	@RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
 	public String editPost(@PathVariable int id, Model model) {
 		BoardVO boardVO = boardService.getBoard(id);
@@ -69,6 +78,7 @@ public class BoardController {
 		return "editform";
 	}
 
+	// 수정 확인 페이지 
 	@RequestMapping(value = "/editok", method = RequestMethod.POST)
 	public String editPostOk(BoardVO vo) {
 		if (boardService.updateBoard(vo) == 0)
@@ -78,6 +88,7 @@ public class BoardController {
 		return "redirect:adminlist";
 	}
 	
+	// 상품 삭제 확인 페이지 
 	@RequestMapping(value = "/delete_ok/{id}", method = RequestMethod.GET)
 	public String deletePostOk(@PathVariable int id) {
 		if (boardService.deleteBoard(id) == 0)
@@ -87,6 +98,7 @@ public class BoardController {
 		return "redirect:../adminlist";
 	}
 	
+	// 댓글 삭제 확인 페이지 -> 상품 수정페이지로 다시 돌아감  
 	@RequestMapping(value = "/deletec_ok/{id}/{cid}", method = RequestMethod.GET)
 	public String deleteCommentOk(@PathVariable int id, @PathVariable  int cid) {
 		if (boardService.deleteComment(cid) == 0)
@@ -96,13 +108,4 @@ public class BoardController {
 		return "redirect:../../editform/{id}";
 	}
 	
-//	@RequestMapping(value = "/delete_okc/{id}", method = RequestMethod.GET)
-//	public String deleteCommenttOk(@PathVariable int id) {
-//		if (boardService.deleteComment(id) == 0)
-//			System.out.println("데이터 삭제 실패");
-//		else
-//			System.out.println("데이터 삭제 성공!!");
-//		return "redirect:../list";
-//	}
-
 }
