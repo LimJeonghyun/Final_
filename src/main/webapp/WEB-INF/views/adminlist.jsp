@@ -47,7 +47,7 @@
 </tr>
 <c:forEach items="${list}" var="u">
 	<tr>
-		<td><a href="editform/${u.getProduct_id()}">${u.getPic()}</a></td>
+		<td><a href="editform/${u.getProduct_id()}"><img src ="${u.getPic()}" alt="pic" width="100" height="100"></a></td>
 		<td><a href="editform/${u.getProduct_id()}">${u.getName()}</a></td>
 		<td>${u.getPrice()}</td>
 	</tr>

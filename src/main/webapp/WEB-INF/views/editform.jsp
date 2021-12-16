@@ -31,7 +31,9 @@ BoardVO u = (BoardVO) request.getAttribute("u");
 <input type="hidden" name="product_id" value="<%=u.getProduct_id()%>"/>
 <table>
 <tr><td colspan="2"><input type="submit" value="Edit"/>
-<tr><td>Pic</td><td><input type="text" name="pic" value="<%= u.getPic()%>"/></td></tr>
+<tr><td><img src ="${u.getPic()}" alt="pic" width="150" height="100"></td></tr>
+<tr><td>Pic</td><td><input type="text" name="pic"/></td></tr>
+</tr>
 <tr><td>Product Name</td><td><input type="text" name="name" value="<%= u.getName()%>" /></td></tr>
 <tr><td>Category:</td><td><input type="text" name="category" value="<%= u.getCategory()%>" /></td></tr>
 <tr><td>Manufacturer</td><td><input type="text" name="manufacturer" value="<%= u.getManufacturer()%>"/></td></tr>
