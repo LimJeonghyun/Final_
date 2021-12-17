@@ -1,11 +1,9 @@
-package io.github.spring.board;
+package io.github.spring.util;
 
 public class BoardVO {
 
 	private int product_id;
 	private String category, name, manufacturer, pic, price, detail, releasedate;
-	private int comment_id;
-	private String productId, nickname, contents;
 	
 	public int getProduct_id() {
 		return product_id;
@@ -56,31 +54,6 @@ public class BoardVO {
 	public void setReleasedate(String releasedate) {
 		this.releasedate = releasedate;
 	}
-	public int getComment_id() {
-		return comment_id;
-	}
-	public void setComment_id(int comment_id) {
-		this.comment_id = comment_id;
-	}
-	public String getProductId() {
-		return productId;
-	}
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-	public String getContents() {
-		return contents;
-	}
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
-	
 	
 	
 }

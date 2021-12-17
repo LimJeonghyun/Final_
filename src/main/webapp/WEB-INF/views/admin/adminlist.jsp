@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="io.github.spring.AdminController"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -36,26 +37,30 @@
 
 
 <!-- 목록 출력  -->
-<h1>목록화면</h1>
+<!-- 목록 출력  -->
+<h1>제품 목록</h1>
 
 <table id="list" width="90%">
 <tr>
+	<th>ID</th>
 	<th>Pic</th>
-	<th>Product</th>
+	<th>Name</th>
 	<th>Price</th>
 	
 </tr>
 <c:forEach items="${list}" var="u">
 	<tr>
-		<td><a href="editform/${u.getProduct_id()}"><img src ="${u.getPic()}" alt="pic" width="100" height="100"></a></td>
-		<td><a href="editform/${u.getProduct_id()}">${u.getName()}</a></td>
-		<td>${u.getPrice()}</td>
+		
+		<td>${u.product_id}</td>
+		<td>${u.pic}</td>
+		<td>${u.name}</td>
+		<td>${u.price}</td> 
 	</tr>
 </c:forEach>
 </table>
 <br/>
 <form action="add" method="get">
-<input type="submit" value="Add"/>
+<input type="button" value="제품 추가" onclick="location.href='../add/${category}'"/>
 </form>
 
 </body>

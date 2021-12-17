@@ -1,4 +1,4 @@
-package io.github.spring.board;
+package io.github.spring.util;
 
 import java.util.List;
 
@@ -20,22 +20,11 @@ public class BoardServiceImpl implements BoardService {
 		public int insertBoard(BoardVO vo) {
 			return boardDAO.insertBoard(vo);
 		}
-		
-		@Override
-		public int insertComment(BoardVO vo) {
-			return boardDAO.insertComment(vo);
-		}
 
 		@Override
 		public int deleteBoard(int pid) {
-			boardDAO.deleteBoard(pid);
-			return 1;
-		}
-//		
-		@Override
-		public int deleteComment(int cid) {
-			boardDAO.deleteComment(cid);
-			return 1;
+			//TODO: 가능하다면 이곳에 pid에 해당하는 모든 comment 삭제해줘야 함
+			return boardDAO.deleteBoard(pid);
 		}
 
 		@Override
@@ -47,15 +36,9 @@ public class BoardServiceImpl implements BoardService {
 		public BoardVO getBoard(int pid) {
 			return boardDAO.getBoard(pid);
 		}
-		
-		@Override
-		public List<BoardVO> getCommentList(int cid) {
-			return boardDAO.getCommentList(cid);
-		}
-
 
 		@Override
-		public List<BoardVO> getBoardList() {
-			return boardDAO.getBoardList();
+		public List<BoardVO> getBoardList(String category) {
+			return boardDAO.getBoardList(category);
 		}
 }
