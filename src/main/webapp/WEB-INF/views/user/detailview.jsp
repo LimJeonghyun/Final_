@@ -104,7 +104,7 @@
 					입력</button>
 				<table>
 					<c:forEach items="${clist}" var="c">
-						<td>${c.nickname}님의댓글</td>
+						<td>${c.nickname}님의 댓글</td>
 						<td><p>${c.comment}</p></td>
 					</c:forEach>
 				</table>

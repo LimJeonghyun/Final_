@@ -65,13 +65,6 @@
 		</c:forEach>
 	</div>
 
-	<br />
-
-
-
-
-
-
 </body>
 </html>
 

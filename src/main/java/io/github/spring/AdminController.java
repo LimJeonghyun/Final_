@@ -31,7 +31,7 @@ public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
 	// /admin -> 관리자 로그인 페이지
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/log", method = RequestMethod.GET)
 	public String admin() {
 		return "admin/admin";
 	}
@@ -39,8 +39,8 @@ public class AdminController {
 	// 로그인 체크
 	@RequestMapping(value = "/checklogin", method = RequestMethod.POST)
 	public String checklogin() {
-
 //	      이 로직이 여기에 들어가야 	할 것 같음
+//		-> java file이라 js 명령어를 사용할 수 없음 
 //			String id= request.getParameter("id");
 //			String pw = request.getParameter("pw");
 //			String admin_id = "admin";
@@ -57,7 +57,6 @@ public class AdminController {
 //				%>
 //				<script>alert("로그인 실패 :("); history.back(); </script><%
 //			}
-
 		return "admin/checklogin";
 	}
 
@@ -92,42 +91,42 @@ public class AdminController {
 	}
 
 	// 제품 추가 확인 -> 목록 페이지로 돌아감
-	@RequestMapping(value = "/addok", method = RequestMethod.POST)
-	public String addPostOK(BoardVO vo) {
+	@RequestMapping(value = "/addok/{category}", method = RequestMethod.POST)
+	public String addPostOK(@PathVariable String category, BoardVO vo) {
 		if (boardService.insertBoard(vo) == 0)
 			System.out.println("데이터 추가 실패");
 		else
 			System.out.println("데이터 추가 성공");
-		return "redirect:admin/adminlist";
+		return "redirect:../adminlist/{category}";
 	}
 
 	// 제품 수정 페이지
 	@RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
 	public String editPost(@PathVariable int id, Model model) {
-		BoardVO boardVO = boardService.getBoard(id);
 		model.addAttribute("clist", commentService.getCommentList(id));
-		model.addAttribute("u", boardVO);
+		model.addAttribute("u", boardService.getBoard(id));
 		return "admin/editform";
 	}
 
 	// 수정 확인
-	@RequestMapping(value = "/editok", method = RequestMethod.POST)
-	public String editPostOk(BoardVO vo) {
+	@RequestMapping(value = "/editok/{category}", method = RequestMethod.POST)
+	public String editPostOk(@PathVariable String category, BoardVO vo) {
 		if (boardService.updateBoard(vo) == 0)
 			System.out.println("데이터 수정 실패");
 		else
 			System.out.println("데이터 수정 성공!!!");
-		return "redirect:admin/adminlist";
+		return "redirect:../adminlist/{category}";
 	}
 
 	// 제품 삭제 확인
-	@RequestMapping(value = "/deleteok/{id}", method = RequestMethod.GET)
-	public String deletePostOk(@PathVariable int id) {
+	@RequestMapping(value = "/deleteok/{id}/{category}", method = RequestMethod.GET)
+	public String deletePostOk(@PathVariable int id, String category) {
+		//TODO: 가능하다면 이 product_id에 해당하는 댓글도 모두 삭제하는 기능 추가
 		if (boardService.deleteBoard(id) == 0)
 			System.out.println("데이터 삭제 실패");
 		else
 			System.out.println("데이터 삭제 성공!!");
-		return "redirect:../admin/adminlist";
+		return "redirect:../../adminlist/{category}";
 	}
 
 	// 댓글 삭제 확인

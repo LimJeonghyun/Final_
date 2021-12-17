@@ -15,9 +15,33 @@
 <title>Home</title>
 </head>
 <body>
-	<h1>Hello world! 사용자 홈</h1>
+	<div class="row">
+		<div class="col-sm"></div>
+		<div class="col-sm">
+			<img class="logo" alt="logo" src="../resources/image/jangbee.png">
+		</div>
+		<div class="col-sm"></div>
+	</div>
 
-	<P>The time on the server is ${serverTime}.</P>
+	<div class="row tapbar">
+		<div class="col-sm"></div>
+		<div class="col-sm">
+			<h5>
+				<a href="">키보드</a>
+			</h5>
+		</div>
+		<div class="col-sm">
+			<h5>
+				<a href="">마우스</a>
+			</h5>
+		</div>
+		<div class="col-sm">
+			<h5>
+				<a href="">모니터암</a>
+			</h5>
+		</div>
+		<div class="col-sm"></div>
+	</div>
 
 </body>
 </html>

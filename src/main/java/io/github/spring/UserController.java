@@ -50,8 +50,8 @@ public class UserController {
 	// /detailview/{id} -> 상품 디테일 페이지
 	@RequestMapping(value = "/detailview/{id}", method = RequestMethod.GET)
 	public String detailview(@PathVariable int id, Model model) {
+		model.addAttribute("clist", commentService.getCommentList(id));
 		model.addAttribute("u", boardService.getBoard(id));
-		// 어차피 product 테이블에서 id 값으로 조회하는거라 category는 상관 없을듯!
 		return "user/detailview";
 	}
 

@@ -25,7 +25,7 @@
 	<div class="row">
 		<div class="col-sm"></div>
 		<div class="col-sm">
-			<img class="logo" alt="logo" src="../resources/image/jangbee.png">
+			<img class="logo" alt="logo" src="../../resources/image/jangbee.png">
 		</div>
 		<div class="col-sm"></div>
 	</div>
@@ -49,72 +49,57 @@
 		</div>
 		<div class="col-sm"></div>
 	</div>
-	
-	edit form
 
-	<!-- 상품 정보 삭제 폼  -->
-	<form action="../deleteok/${u.product_id}" method="get">
-		<input type="submit" value="제품 삭제" />
-	</form>
+	<button class="btn btn-secondary btn-lg px-4 me-md-2"
+		onclick="location.href='../adminlist/${u.category}'">돌아가기</button>
+
+	<!-- back 기능이 있으면 좋을것 같아서  -->
 
 	<!-- 상품 정보 수정 폼 -->
-	<form action="/editok" method="post">
+	<form action="../editok/${u.category}" method="post">
 		<input type="hidden" name="product_id" value="${u.product_id}" />
+
 		<table>
 			<tr>
-				<td colspan="2"><input type="submit" value="Edit" />
-			<tr>
-				<td>Pic</td>
+				<td>제품 사진 URL</td>
 				<td><input type="text" name="pic" value="${u.pic}" /></td>
 			</tr>
 			<tr>
-				<td>Product Name</td>
+				<td>제품명</td>
 				<td><input type="text" name="name" value="${u.name}" /></td>
 			</tr>
 			<tr>
-				<td>Category</td>
+				<td>카테고리</td>
 				<td><input type="text" name="category" value="${u.category}" /></td>
 			</tr>
 			<tr>
-				<td>Manufacturer</td>
+				<td>제조사</td>
 				<td><input type="text" name="manufacturer"
-					value="${u.manufacturer}" /></td>
+					value="${u.manufacturer}"></td>
 			</tr>
 			<tr>
-				<td>Price</td>
-				<td><input type="text" name="price" value="${u.price}" /></td>
+				<td>가격</td>
+				<td><input type="text" name="price" value="${u.price}"></td>
 			</tr>
 			<tr>
-				<td>Release date</td>
+				<td>출시년월(YYYY/MM)</td>
 				<td><input type="text" name="releasedate"
-					value="${u.releasedate}" /></td>
+					value="${u.releasedate}"></td>
 			</tr>
 			<tr>
-				<td>Detail</td>
-				<td><textarea cols="50" rows="5" name="detail">${u.detail}</textarea></td>
+				<td>제품 상세이미지 URL</td>
+				<td><input type="text" name="detail" value="${u.detail}"></td>
 			</tr>
-
 		</table>
+		<button class="btn btn-primary btn-lg px-4 me-md-2" type="submit">수정
+			완료</button>
 	</form>
 
-
-	<!-- 댓글 폼  -->
-
-	<!-- 임시 댓글 추가 기능도 구현  -->
-	<!-- 해당 기능은 사용자 화면으로 복붙하면 될듯!  -->
-
-	<%-- <br><br><tr><td>[ 댓글 ]</td></tr><br>
-<form action="../addcommentok/${u.product_id}" method="post">
-<input type="hidden" name="product_id" value="${u.product_id}"/>
-<input type="hidden" name="product_id" value="${u.Product_id}"/>
-<table>
-<tr><td>닉네임</td><td><input type="text" name="nickname"/></td></tr>
-<tr><td>내용</td><td><input type="text" name="comment"/></td></tr>
-<tr><td><input type="submit" value="댓글 달기"/></td></tr>
-</table>
-</form>
-
-<br> --%>
+	<!-- 상품 정보 삭제 폼  -->
+	<form action="../deleteok/${u.product_id}/${u.category}" method="get">
+		<button class="btn btn-warning btn-lg px-4 me-md-2" type="submit">제품
+			삭제</button>
+	</form>
 
 	<!-- comment delete function  -->
 	<table id="clist" width="90%">
