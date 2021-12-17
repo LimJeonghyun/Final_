@@ -1,55 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="io.github.spring.AdminController"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<%@page import="io.github.spring.UserController"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${path}/resources/css/style.css" rel="stylesheet">
+<link href="//font.elice.io/EliceDigitalBaeum.css" rel="stylesheet">
 <title>상품 조회 페이지</title>
 
 <script>
-/* function delete_ok(id){
-	var a = confirm("정말로 삭제하겠습니까?");
-	if(a) location.href='deleteok/' + id;
-} */
+	/* function delete_ok(id){
+	 var a = confirm("정말로 삭제하겠습니까?");
+	 if(a) location.href='deleteok/' + id;
+	 } */
 </script>
 </head>
 <body>
+	<div class="row">
+		<div class="col-sm"></div>
+		<div class="col-sm">
+			<img class="logo" alt="logo" src="../resources/image/jangbee.png">
+		</div>
+		<div class="col-sm"></div>
+	</div>
 
-<h1>상품 조회 페이지</h1>
+	<div class="row tapbar">
+		<div class="col-sm"></div>
+		<div class="col-sm">
+			<h5>
+				<a href="">키보드</a>
+			</h5>
+		</div>
+		<div class="col-sm">
+			<h5>
+				<a href="">마우스</a>
+			</h5>
+		</div>
+		<div class="col-sm">
+			<h5>
+				<a href="">모니터암</a>
+			</h5>
+		</div>
+		<div class="col-sm"></div>
+	</div>
 
-<input type="button" value="돌아가기" onclick="location.href='../adminlist'"/></td></tr>
-<!-- back 기능이 있으면 좋을것 같아서  -->
+	<div class="col">
+		<div class="row">
+			<div class="col-sm"></div>
+			<div class="col-sm">
+				<img class="detailimage" alt="detailimage" src="${u.pic}">
+			</div>
+			<div class="col-sm"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm"></div>
+			<div class="col detail">
+				<div class="col-sm">
+					<h2 class="data">${u.name}</h2>
+				</div>
+				<div class="col-sm">
+					<h4 class="data">${u.manufacturer}</h4>
+				</div>
+				<div class="col-sm">
+					<h6>${u.price}</h6>
+				</div>
+				<div class="col-sm">
+					<h6>${u.releasedate}출시</h6>
+				</div>
 
-<!-- 상품 정보 수정 폼 -->
-<form action="../editok" method="post">
-<input type="hidden" name="product_id" value="${u.product_id}"/>
-<table>
-<tr><td colspan="2"><input type="submit" value="Edit"/>
-<tr><td>Pic</td><td><input type="text" name="pic" value="${u.pic}"/></td></tr>
-<tr><td>Product Name</td><td><input type="text" name="name" value="${u.name}" /></td></tr>
-<tr><td>Category</td><td><input type="text" name="category" value="${u.category}" /></td></tr>
-<tr><td>Manufacturer</td><td><input type="text" name="manufacturer" value="${u.manufacturer}"/></td></tr>
-<tr><td>Price</td><td><input type="text" name="price" value="${u.price}" /></td></tr>
-<tr><td>Release date</td><td><input type="text" name="releasedate" value="${u.releasedate}"/></td></tr>
-<tr><td>Detail</td><td><textarea cols="50" rows="5" name="detail">${u.detail}</textarea></td></tr>
+				<div class="col-sm">
+					<img class="detailimage" alt="detailimage" src="${u.detail}">
+				</div>
+			</div>
+			<div class="col-sm"></div>
+		</div>
 
-</table>
-</form>
+	</div>
 
-<br><br><tr><td>[ 댓글 ]</td></tr><br>
-<form action="../addcommentok/${u.product_id}" method="post">
-<input type="hidden" name="product_id" value="${u.product_id}"/>
-<%-- <input type="hidden" name="product_id" value="${u.Product_id}"/> --%>
-<table>
-<tr><td>닉네임</td><td><input type="text" name="nickname"/></td></tr>
-<tr><td>내용</td><td><input type="text" name="comment"/></td></tr>
-<tr><td><input type="submit" value="댓글 달기"/></td></tr>
-</table>
-</form>
+	<div class="row">
+		<div class="col-sm"></div>
+		<div class="col-sm comment">
+			<h5>[댓글]</h5>
 
-<br>
+			<form action="../addcommentok/${u.product_id}" method="post">
+				<input type="hidden" name="product_id" value="${u.product_id}" />
+				<table width="100%">
+					<tr>
+						<td>닉네임</td>
+						<td><input type="text" name="nickname" required /></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td><textarea name="comment" required> </textarea></td>
+					</tr>
+				</table>
+				<button type="submit" class="btn btn-secondary btn-sm px-4 me-md-2">댓글
+					입력</button>
+				<table>
+					<c:forEach items="${clist}" var="c">
+						<td>${c.nickname}님의 댓글</td>
+						<td><p>${c.comment}</p></td>
+					</c:forEach>
+				</table>
+			</form>
+		</div>
+		<div class="col-sm"></div>
+	</div>
 
 </body>
 </html>

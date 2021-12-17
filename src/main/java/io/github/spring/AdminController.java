@@ -103,9 +103,8 @@ public class AdminController {
 	// 제품 수정 페이지
 	@RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
 	public String editPost(@PathVariable int id, Model model) {
-		BoardVO boardVO = boardService.getBoard(id);
 		model.addAttribute("clist", commentService.getCommentList(id));
-		model.addAttribute("u", boardVO);
+		model.addAttribute("u", boardService.getBoard(id));
 		return "admin/editform";
 	}
 
@@ -122,6 +121,7 @@ public class AdminController {
 	// 제품 삭제 확인
 	@RequestMapping(value = "/deleteok/{id}/{category}", method = RequestMethod.GET)
 	public String deletePostOk(@PathVariable int id, String category) {
+		//TODO: 가능하다면 이 product_id에 해당하는 댓글도 모두 삭제하는 기능 추가
 		if (boardService.deleteBoard(id) == 0)
 			System.out.println("데이터 삭제 실패");
 		else
