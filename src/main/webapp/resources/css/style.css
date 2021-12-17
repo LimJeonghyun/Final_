@@ -1,0 +1,107 @@
+html, body {
+	font-family: "Elice Digital Baeum", sans-serif;
+}
+
+body {
+	padding: 30px;
+	color: #303030;
+}
+
+.logo {
+	left: 0;
+	right: 0;
+	min-width: 300px;
+	max-width: 500px;
+	width: 100%;
+	padding-bottom: 50px;
+	padding: auto;
+	vertical-align: middle;
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	padding: auto;
+}
+
+.tapbar {
+	margin-bottom: 50px;
+}
+
+a {
+	color: #303030;
+	text-decoration: none;
+}
+
+h5 {
+	text-align: center;
+}
+
+.data {
+	padding-bottom: 20px;
+}
+
+a:hover {
+	color: gray;
+}
+
+.col-sm-3 {
+	width: 30%;
+	margin: 1.666666666%;
+}
+
+.thumbnail {
+	background-position: center;
+	width: 26.5vw;
+	height: 26.5vw;
+	display: block;
+	overflow: hidden;
+}
+
+.thumbnail img {
+	display: block;
+	max-width: initial;
+	min-width: 100%;
+	min-height: 100%;
+	object-fit: cover;
+	background-position: center;
+}
+
+.description {
+	margin: 0 auto;
+	justify-content: center;
+	text-align: center;
+}
+
+.productname {
+	font-size: 15px;
+	margin: 5px;
+	margin-top: 20px;
+}
+
+.productprice {
+	font-size: 10px;
+}
+
+.detailimage {
+	padding-bottom: 50px;
+	padding: auto;
+	margin: auto;
+	vertical-align: middle;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+	vertical-align: middle;
+}
+
+.detail {
+	padding-bottom: 50px;
+	padding: auto;
+	margin: auto;
+	vertical-align: middle;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+	vertical-align: middle;
+	text-align: center;
+}

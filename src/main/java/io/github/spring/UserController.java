@@ -59,9 +59,9 @@ public class UserController {
 	@RequestMapping(value = "/addcommentok/{id}", method = RequestMethod.POST)
 	public String editCommentOk(CommentVO vo) {
 		if (commentService.insertComment(vo) == 0)
-			System.out.println("댓글 수정 실패");
+			System.out.println("댓글 추가 실패");
 		else
-			System.out.println("댓글 수정 성공!!!");
+			System.out.println("댓글 추가 성공!!!");
 		return "redirect:../detailview/{id}";
 	}
 
