@@ -31,17 +31,17 @@
 		<div class="col-sm"></div>
 		<div class="col-sm">
 			<h5>
-				<a href="">키보드</a>
+				<a href="keyboard">키보드</a>
 			</h5>
 		</div>
 		<div class="col-sm">
 			<h5>
-				<a href="">마우스</a>
+				<a href="mouse">마우스</a>
 			</h5>
 		</div>
 		<div class="col-sm">
 			<h5>
-				<a href="">모니터암</a>
+				<a href="monitorarm">모니터암</a>
 			</h5>
 		</div>
 		<div class="col-sm"></div>
@@ -51,11 +51,11 @@
 		<c:forEach items="${list}" var="u">
 			<div class="col-sm-3">
 				<div class="thumbnail">
-					<a href=""><img src="${u.pic}" class="thumbnailimage" width="100%"></a>
+					<a href="../detailview/${u.product_id}"><img src="${u.pic}" class="thumbnailimage" width="100%"></a>
 				</div>
 				<div class="description">
 					<div class="productname">
-						<a href="">${u.name}</a>
+						<a href="../detailview/${u.product_id}">${u.name}</a>
 					</div>
 					<div class="productprice">
 						<p class="productprice">${u.price}</p>
