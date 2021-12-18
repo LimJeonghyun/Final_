@@ -25,7 +25,8 @@
 	<div class="row">
 		<div class="col-sm"></div>
 		<div class="col-sm">
-			<img class="logo" alt="logo" src="../resources/image/jangbee.png">
+			<a href="../"> <img class="logo" alt="logo"
+				src="../resources/image/jangbee.png"></a>
 		</div>
 		<div class="col-sm"></div>
 	</div>
@@ -34,17 +35,17 @@
 		<div class="col-sm"></div>
 		<div class="col-sm">
 			<h5>
-				<a href="">키보드</a>
+				<a href="../list/keyboard">키보드</a>
 			</h5>
 		</div>
 		<div class="col-sm">
 			<h5>
-				<a href="">마우스</a>
+				<a href="../list/mouse">마우스</a>
 			</h5>
 		</div>
 		<div class="col-sm">
 			<h5>
-				<a href="">모니터암</a>
+				<a href="../list/monitorarm">모니터암</a>
 			</h5>
 		</div>
 		<div class="col-sm"></div>
@@ -59,7 +60,7 @@
 			<div class="col-sm"></div>
 		</div>
 		<div class="row">
-			<div class="col-sm"></div>
+			<div class="col-sm-1"></div>
 			<div class="col detail">
 				<div class="col-sm">
 					<h2 class="data">${u.name}</h2>
@@ -78,40 +79,56 @@
 					<img class="detailimage" alt="detailimage" src="${u.detail}">
 				</div>
 			</div>
-			<div class="col-sm"></div>
+			<div class="col-sm-1"></div>
 		</div>
 
 	</div>
+
+	<br>
+	<br>
 
 	<div class="row">
-		<div class="col-sm"></div>
-		<div class="col-sm comment">
-			<h5>[댓글]</h5>
+		<div class="col-sm-1"></div>
 
+		<div class="col comment">
+			<h4>[댓글 달기]</h4>
 			<form action="../addcommentok/${u.product_id}" method="post">
 				<input type="hidden" name="product_id" value="${u.product_id}" />
-				<table width="100%">
-					<tr>
-						<td>닉네임</td>
-						<td><input type="text" name="nickname" required /></td>
-					</tr>
-					<tr>
-						<td>내용</td>
-						<td><textarea name="comment" required> </textarea></td>
-					</tr>
-				</table>
+				<div class="col-sm">
+					<label for="nickname">닉네임</label>
+				</div>
+				<div class="col-sm">
+					<input type="text" name="nickname" placeholder="닉네임" required />
+				</div>
+				<div class="col-sm">
+					<label for="comment">내용</label>
+					<div class="col-sm">
+						<textarea name="comment" cols="30" rows="3"
+							placeholder="내용을 입력해주세요." required></textarea>
+					</div>
+				</div>
+
+
 				<button type="submit" class="btn btn-secondary btn-sm px-4 me-md-2">댓글
 					입력</button>
-				<table>
-					<c:forEach items="${clist}" var="c">
-						<td>${c.nickname}님의 댓글</td>
-						<td><p>${c.comment}</p></td>
-					</c:forEach>
-				</table>
-			</form>
-		</div>
-		<div class="col-sm"></div>
-	</div>
+				<br> <br>
 
+				<div class="row">
+
+					<c:forEach items="${clist}" var="c">
+						<br>
+						<div class="row-sm">${c.nickname}님의댓글:</div>
+						<div class="row-sm">
+							<p>${c.comment}</p>
+						</div>
+						<br>
+					</c:forEach>
+
+				</div>
+			</form>
+
+		</div>
+		<div class="col-sm-1"></div>
+	</div>
 </body>
 </html>

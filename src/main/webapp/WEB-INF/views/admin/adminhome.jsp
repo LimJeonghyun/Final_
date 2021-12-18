@@ -35,8 +35,18 @@
 		</div>
 		<div class="col-sm">
 			<h5>
-				<a href="adminlisy/monitorarm">모니터암</a>
+				<a href="adminlist/monitorarm">모니터암</a>
 			</h5>
+		</div>
+		<div class="col-sm"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm"></div>
+		<div class="col-sm">
+			<h1>JANBEE 소개</h1>
+			<br>
+			<h3>JANGBEE는 개발자 또는 개발자를 꿈꾸는 학생들에게 좋은 장비를 추천해주는 서비스입니다.</h3>
 		</div>
 		<div class="col-sm"></div>
 	</div>
