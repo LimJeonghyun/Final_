@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,8 @@
 	<div class="row">
 		<div class="col-sm"></div>
 		<div class="col-sm">
-			<img class="logo" alt="logo" src="../resources/image/jangbee.png">
+			<a href="../"> <img class="logo" alt="logo"
+				src="../resources/image/jangbee.png"></a>
 		</div>
 		<div class="col-sm"></div>
 	</div>
@@ -51,7 +52,8 @@
 		<c:forEach items="${list}" var="u">
 			<div class="col-sm-3">
 				<div class="thumbnail">
-					<a href="../detailview/${u.product_id}"><img src="${u.pic}" class="thumbnailimage" width="100%"></a>
+					<a href="../detailview/${u.product_id}"><img src="${u.pic}"
+						class="thumbnailimage" width="100%"></a>
 				</div>
 				<div class="description">
 					<div class="productname">

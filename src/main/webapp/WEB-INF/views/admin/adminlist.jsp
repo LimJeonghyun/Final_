@@ -23,7 +23,7 @@
 	<div class="row">
 		<div class="col-sm"></div>
 		<div class="col-sm">
-			<img class="logo" alt="logo" src="../../resources/image/jangbee.png">
+				<a href="../adminhome"><img class="logo" alt="logo" src="../../resources/image/jangbee.png"></a>
 		</div>
 		<div class="col-sm"></div>
 	</div>

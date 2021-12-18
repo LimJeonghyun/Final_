@@ -25,7 +25,8 @@
 	<div class="row">
 		<div class="col-sm"></div>
 		<div class="col-sm">
-			<img class="logo" alt="logo" src="../../resources/image/jangbee.png">
+			<a href="../adminhome"><img class="logo" alt="logo"
+				src="../../resources/image/jangbee.png"></a>
 		</div>
 		<div class="col-sm"></div>
 	</div>
@@ -44,7 +45,7 @@
 		</div>
 		<div class="col-sm">
 			<h5>
-				<a href="adminlist/monitorarm">모니터암</a>
+				<a href="../adminlist/monitorarm">모니터암</a>
 			</h5>
 		</div>
 		<div class="col-sm"></div>
@@ -101,26 +102,31 @@
 			삭제</button>
 	</form>
 
-	<!-- comment delete function  -->
-	<table id="clist" width="90%">
-		<tr>
-			<td>[ 댓글 ]</td>
-		</tr>
-		<c:forEach items="${clist}" var="c">
-			<tr>
-				<td>닉네임 : ${c.nickname}</td>
-			</tr>
-			<tr>
-				<td>내용 : ${c.comment}</td>
-				<td>
-					<form action="../deletecommentok/${c.product_id}/${c.comment_id}"
-						method="get">
-						<input type="submit" value="댓글 삭제" />
-					</form>
-				<td>
-			</tr>
-		</c:forEach>
-	</table>
+	<div class="row">
+
+		<div class="col comment">
+
+
+
+			<c:forEach items="${clist}" var="c">
+				<br>
+				<div class="row-sm">${c.nickname}님의댓글:</div>
+				<div class="row-sm">
+					<p>${c.comment}</p>
+				</div>
+
+				<form action="../deletecommentok/${c.product_id}/${c.comment_id}"
+					method="get">
+					<button type="submit" class="btn btn-secondary btn-sm px-4 me-md-2">댓글
+						삭제</button>
+				</form>
+
+			</c:forEach>
+
+
+		</div>
+
+	</div>
 
 
 </body>

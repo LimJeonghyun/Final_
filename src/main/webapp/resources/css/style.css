@@ -35,6 +35,10 @@ h5 {
 	text-align: center;
 }
 
+textarea {
+	resize: none;
+}
+
 .data {
 	padding-bottom: 20px;
 }
@@ -82,26 +86,10 @@ a:hover {
 }
 
 .detailimage {
-	padding-bottom: 50px;
-	padding: auto;
-	margin: auto;
-	vertical-align: middle;
-	background-position: center center;
-	background-size: cover;
-	background-repeat: no-repeat;
+	padding-top: 100px;
 	width: 100%;
-	vertical-align: middle;
 }
 
-.detail {
-	padding-bottom: 50px;
-	padding: auto;
-	margin: auto;
-	vertical-align: middle;
-	background-position: center center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	width: 100%;
-	vertical-align: middle;
-	text-align: center;
+.commentlist {
+	text-align: left;
 }
